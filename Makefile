@@ -208,6 +208,9 @@ export KBUILD_BUILDHOST := $(SUBARCH)
 #CROSS_COMPILE	?= $(CONFIG_CROSS_COMPILE:"%"=%)
 ARCH		?= arm
 CROSS_COMPILE	?= arm-eabi-
+CROSS_COMPILE   := $(shell if [ -f .cross_compile ]; then \
+cat .cross_compile; \
+fi)
 
 # Architecture as present in compile.h
 UTS_MACHINE 	:= $(ARCH)
